@@ -5,7 +5,20 @@ const sidebars = {
       type: 'category',
       label: 'MeshCore',
       collapsed: false,
-      items: ['meshcore/start-here', 'meshcore/local-settings', 'meshcore/repeaters']
+      items: [
+        'meshcore/getting-started',
+        'meshcore/start-here',
+        'meshcore/companion-node',
+        'meshcore/repeater-node',
+        'meshcore/repeater-deployment-checklist',
+        'meshcore/repeater-settings',
+        'meshcore/recommended-settings',
+        'meshcore/cli-quick-reference',
+        'meshcore/troubleshooting',
+        'meshcore/rxdelay-txdelay',
+        'meshcore/routing',
+        'meshcore/glossary'
+      ]
     },
     {
       type: 'category',
