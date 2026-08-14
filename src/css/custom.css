@@ -68,21 +68,27 @@ body::before {
   .navbar-sidebar {
     background: rgba(11, 18, 32, .98);
     box-shadow: 24px 0 80px rgb(0 0 0 / .42);
-    z-index: 1000;
+    isolation: isolate;
   }
 
   .navbar-sidebar__backdrop {
-    z-index: 999;
+    left: var(--ifm-navbar-sidebar-width);
+    z-index: 0;
   }
 
   .navbar-sidebar__brand,
-  .navbar-sidebar__items {
+  .navbar-sidebar__items,
+  .navbar-sidebar__item {
     position: relative;
-    z-index: 1001;
+    z-index: 1;
   }
 
   .navbar-sidebar__items {
     height: calc(100dvh - var(--ifm-navbar-height));
+  }
+
+  .navbar-sidebar__item {
+    max-height: calc(100dvh - var(--ifm-navbar-height));
     overflow-y: auto;
     overscroll-behavior: contain;
   }

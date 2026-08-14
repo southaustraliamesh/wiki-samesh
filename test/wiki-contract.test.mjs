@@ -63,9 +63,12 @@ describe('SA Mesh wiki contract', () => {
     assert.match(css, /backdrop-filter:\s*none/);
     assert.match(css, /\.navbar-sidebar,\s*\n\s*\.navbar-sidebar__backdrop/);
     assert.match(css, /height:\s*100dvh\s*!important/);
-    assert.match(css, /z-index:\s*1000/);
-    assert.match(css, /\.navbar-sidebar__backdrop\s*{\s*\n\s*z-index:\s*999/);
+    assert.match(css, /left:\s*var\(--ifm-navbar-sidebar-width\)/);
+    assert.match(css, /isolation:\s*isolate/);
+    assert.match(css, /\.navbar-sidebar__item/);
+    assert.match(css, /color:\s*#f8fafc\s*!important/);
     assert.match(css, /\.navbar-sidebar__items/);
+    assert.match(css, /max-height:\s*calc\(100dvh - var\(--ifm-navbar-height\)\)/);
     assert.match(css, /overscroll-behavior:\s*contain/);
   });
 
