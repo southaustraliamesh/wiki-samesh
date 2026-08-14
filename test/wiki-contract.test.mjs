@@ -20,6 +20,7 @@ describe('SA Mesh wiki contract', () => {
     assert.match(config, /https:\/\/wiki\.samesh\.au/);
     assert.match(config, /https:\/\/samesh\.au\//);
     assert.match(config, /https:\/\/sa\.themesh\.au\/map/);
+    assert.match(config, /favicon: 'img\/favicon\.ico'/);
   });
 
   it('keeps SA radio baseline visible in migrated docs', async () => {

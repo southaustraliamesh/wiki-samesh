@@ -1,7 +1,7 @@
 const config = {
   title: 'SA Mesh Wiki',
   tagline: 'South Australian MeshCore community knowledge base',
-  favicon: 'img/samug-logo.png',
+  favicon: 'img/favicon.ico',
   url: 'https://wiki.samesh.au',
   baseUrl: '/',
   organizationName: 'southaustraliamesh',

@@ -43,6 +43,9 @@ jobs:
         run: |
           test -f build/index.html
           test -f build/img/samug-logo.png
+          test -f build/img/favicon.ico
+          test -f build/img/favicon-32.png
+          test -f build/img/favicon-192.png
           test -f build/sitemap.xml
           test ! -e build/.git
           test ! -e build/node_modules
