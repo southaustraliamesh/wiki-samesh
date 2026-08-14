@@ -33,8 +33,18 @@ describe('SA Mesh wiki contract', () => {
   it('adds the migrated MeshCore page set and getting-started path', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
     for (const doc of ['meshcore/getting-started', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
-      assert.match(sidebar, new RegExp(doc.replace('/', '\/')));
+      assert.match(sidebar, new RegExp(doc.replace('/', '\\/')));
     }
+  });
+
+  it('uses human-friendly NSW-style sidebar labels instead of raw page titles', async () => {
+    const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
+    for (const label of ['Getting Started', 'Overview', 'Frequency & Settings', 'Hardware', 'Companions', 'Repeaters', 'Deployment Checklist', 'Settings Profiles', 'Reference', 'CLI Commands', 'Delay Calculations']) {
+      assert.match(sidebar, new RegExp(`label: '${label.replace('&', '\\&')}'`));
+    }
+    assert.doesNotMatch(sidebar, /label: 'MeshCore start here'/);
+    assert.doesNotMatch(sidebar, /label: 'MeshCore CLI quick reference'/);
+    assert.doesNotMatch(sidebar, /label: 'MeshCore rxdelay and txdelay explanation and calculations'/);
   });
 
   it('keeps migrated docs source-noted and public-safe', async () => {
