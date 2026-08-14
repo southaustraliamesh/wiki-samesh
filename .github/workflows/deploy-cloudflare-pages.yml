@@ -1,0 +1,56 @@
+name: Deploy Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+      - preview
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: wiki-samesh-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-deploy:
+    name: Test, build and publish Docusaurus wiki
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Docusaurus static artifact
+        run: npm run build
+
+      - name: Verify artifact
+        run: |
+          test -f build/index.html
+          test -f build/img/samug-logo.png
+          test -f build/sitemap.xml
+          test ! -e build/.git
+          test ! -e build/node_modules
+
+      - name: Deploy to Cloudflare Pages
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_PAGES_BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: npx --yes wrangler@4.118.0 pages deploy build --project-name=wiki-samesh --branch="$CF_PAGES_BRANCH" --commit-dirty=true

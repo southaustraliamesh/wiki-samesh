@@ -1,0 +1,73 @@
+:root {
+  --ifm-color-primary: #5973ff;
+  --ifm-color-primary-dark: #3655ff;
+  --ifm-color-primary-darker: #2446fb;
+  --ifm-color-primary-darkest: #1233d4;
+  --ifm-color-primary-light: #7c91ff;
+  --ifm-color-primary-lighter: #91a2ff;
+  --ifm-color-primary-lightest: #bec8ff;
+  --ifm-background-color: #0b1220;
+  --ifm-background-surface-color: #111827;
+  --ifm-font-color-base: #f8fafc;
+  --ifm-font-color-secondary: #cbd5e1;
+  --ifm-heading-color: #f8fafc;
+  --ifm-link-color: #8ea2ff;
+  --ifm-navbar-background-color: rgba(11, 18, 32, .94);
+  --ifm-navbar-link-color: #cbd5e1;
+  --ifm-footer-background-color: #080d17;
+  --ifm-font-family-base: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+}
+html[data-theme='dark'] {
+  --ifm-background-color: #0b1220;
+  --ifm-background-surface-color: #111827;
+  --ifm-color-content: #f8fafc;
+  --ifm-color-content-secondary: #cbd5e1;
+  --ifm-navbar-link-color: #cbd5e1;
+}
+body {
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at 18% 18%, rgb(89 115 255 / .18), transparent 34rem),
+    radial-gradient(circle at 85% 82%, rgb(50 211 255 / .10), transparent 30rem),
+    linear-gradient(180deg, #0d1524 0%, #0b1220 62%, #080d17 100%);
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.26;
+  background-image:radial-gradient(circle, rgb(255 255 255 / .56) 1px, transparent 1.5px), linear-gradient(62deg, transparent 0 44%, rgb(148 163 184 / .18) 44.4% 44.7%, transparent 45% 100%);
+  background-size:88px 88px, 260px 210px;
+  mask-image:linear-gradient(180deg, #000 0%, transparent 80%);
+}
+.navbar {
+  min-height: 78px;
+  border-bottom:1px solid rgb(148 163 184 / .16);
+  backdrop-filter:blur(18px);
+  box-shadow:0 18px 52px rgb(0 0 0 / .22);
+}
+.navbar__brand { font-style:italic; font-weight:950; letter-spacing:.04em; }
+.navbar__title { color:#fff; }
+.navbar__link { color:#cbd5e1; }
+.navbar__link:hover { color:#fff; }
+.navbar__logo { width:112px; height:auto; margin-right:12px; }
+.navbar__logo img { width:112px; height:auto; object-fit:contain; border-radius:10px; box-shadow:0 0 0 1px rgb(50 211 255 / .18), 0 8px 24px rgb(36 74 145 / .46); }
+.main-wrapper { position:relative; }
+.theme-doc-markdown h1 { letter-spacing:-.055em; }
+.theme-doc-markdown { color:#e5e7eb; }
+.theme-doc-markdown h1, .theme-doc-markdown h2 { font-style:italic; }
+.theme-doc-markdown p, .theme-doc-markdown li { color:#dbe4f0; }
+.theme-doc-markdown img[alt='SA:MUG banner'] { max-width:342px; border-radius:14px; box-shadow:0 24px 80px rgb(36 74 145 / .34); }
+.card, .theme-admonition, .table-of-contents, .theme-doc-sidebar-container {
+  border-color: rgb(148 163 184 / .18) !important;
+  background: linear-gradient(180deg, rgb(34 45 62 / .95), rgb(25 35 50 / .95));
+}
+.theme-admonition, .theme-admonition p { color:#dbe4f0; }
+.theme-admonition-heading { color:#9be7d6; }
+.theme-doc-toc-desktop, .table-of-contents { background:rgb(17 24 39 / .72); }
+.menu__link, .table-of-contents__link { border-radius:12px; }
+.menu__link--active, .menu__link:hover { background:rgb(89 115 255 / .18); color:#fff; }
+.footer { border-top:1px solid rgb(148 163 184 / .16); }
+.markdown table { background:rgb(11 18 32 / .44); border-radius:16px; overflow:hidden; }
+.markdown th { background:rgb(89 115 255 / .16); }
