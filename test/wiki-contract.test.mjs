@@ -56,6 +56,19 @@ describe('SA Mesh wiki contract', () => {
     }
   });
 
+  it('keeps the mobile navbar sidebar above page content', async () => {
+    const css = await readFile(new URL('../src/css/custom.css', import.meta.url), 'utf8');
+    assert.match(css, /@media \(max-width: 996px\)/);
+    assert.match(css, /-webkit-backdrop-filter:\s*none/);
+    assert.match(css, /backdrop-filter:\s*none/);
+    assert.match(css, /\.navbar-sidebar,\s*\n\s*\.navbar-sidebar__backdrop/);
+    assert.match(css, /height:\s*100dvh\s*!important/);
+    assert.match(css, /z-index:\s*1000/);
+    assert.match(css, /\.navbar-sidebar__backdrop\s*{\s*\n\s*z-index:\s*999/);
+    assert.match(css, /\.navbar-sidebar__items/);
+    assert.match(css, /overscroll-behavior:\s*contain/);
+  });
+
   it('keeps Meshtastic migration conservative and source-noted', async () => {
     const files = await listMarkdown(new URL('../docs/meshtastic', import.meta.url));
     assert.ok(files.length >= 4);

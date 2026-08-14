@@ -53,6 +53,51 @@ body::before {
 .navbar__link:hover { color:#fff; }
 .navbar__logo { width:112px; height:auto; margin-right:12px; }
 .navbar__logo img { width:112px; height:auto; object-fit:contain; border-radius:10px; box-shadow:0 0 0 1px rgb(50 211 255 / .18), 0 8px 24px rgb(36 74 145 / .46); }
+@media (max-width: 996px) {
+  .navbar {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .navbar-sidebar,
+  .navbar-sidebar__backdrop {
+    height: 100dvh !important;
+    max-height: 100dvh;
+  }
+
+  .navbar-sidebar {
+    background: rgba(11, 18, 32, .98);
+    box-shadow: 24px 0 80px rgb(0 0 0 / .42);
+    z-index: 1000;
+  }
+
+  .navbar-sidebar__backdrop {
+    z-index: 999;
+  }
+
+  .navbar-sidebar__brand,
+  .navbar-sidebar__items {
+    position: relative;
+    z-index: 1001;
+  }
+
+  .navbar-sidebar__items {
+    height: calc(100dvh - var(--ifm-navbar-height));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .navbar-sidebar .menu,
+  .navbar-sidebar .menu__list,
+  .navbar-sidebar .menu__link,
+  .navbar-sidebar__back {
+    color: #f8fafc !important;
+  }
+
+  .navbar-sidebar .menu__link:not(.menu__link--active) {
+    color: #dbe4f0 !important;
+  }
+}
 .main-wrapper { position:relative; }
 .theme-doc-markdown h1 { letter-spacing:-.055em; }
 .theme-doc-markdown { color:#e5e7eb; }
