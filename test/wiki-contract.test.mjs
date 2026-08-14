@@ -94,6 +94,19 @@ describe('SA Mesh wiki contract', () => {
     assert.doesNotMatch(sidebar, /label: 'MeshCore rxdelay and txdelay explanation and calculations'/);
   });
 
+  it('nests MeshCore-only reference pages under MeshCore and keeps Glossary global', async () => {
+    const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
+    const meshCoreStart = sidebar.indexOf("label: 'MeshCore'");
+    const meshtasticStart = sidebar.indexOf("label: 'Meshtastic'");
+    const glossaryStart = sidebar.indexOf("label: 'Glossary'");
+    const communityStart = sidebar.indexOf("label: 'Community'");
+    for (const needle of ["id: 'meshcore/cli-quick-reference'", "id: 'meshcore/rxdelay-txdelay'", "label: 'Reference'"]) {
+      const index = sidebar.indexOf(needle);
+      assert.ok(index > meshCoreStart && index < meshtasticStart, `${needle} should be inside MeshCore before Meshtastic`);
+    }
+    assert.ok(glossaryStart > meshtasticStart && glossaryStart < communityStart, 'Glossary should remain global before Community');
+  });
+
   it('keeps migrated docs source-noted and public-safe', async () => {
     const files = await listMarkdown(new URL('../docs/meshcore', import.meta.url));
     assert.ok(files.length >= 12);

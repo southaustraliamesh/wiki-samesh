@@ -39,6 +39,23 @@ const sidebars = {
           type: 'doc',
           id: 'meshcore/troubleshooting',
           label: 'Troubleshooting'
+        },
+        {
+          type: 'category',
+          label: 'Reference',
+          collapsed: false,
+          items: [
+            {
+              type: 'doc',
+              id: 'meshcore/cli-quick-reference',
+              label: 'CLI Commands'
+            },
+            {
+              type: 'doc',
+              id: 'meshcore/rxdelay-txdelay',
+              label: 'Delay Calculations'
+            }
+          ]
         }
       ]
     },
@@ -128,26 +145,9 @@ const sidebars = {
       ]
     },
     {
-      type: 'category',
-      label: 'Reference',
-      collapsed: false,
-      items: [
-        {
-          type: 'doc',
-          id: 'meshcore/cli-quick-reference',
-          label: 'CLI Commands'
-        },
-        {
-          type: 'doc',
-          id: 'meshcore/rxdelay-txdelay',
-          label: 'Delay Calculations'
-        },
-        {
-          type: 'doc',
-          id: 'meshcore/glossary',
-          label: 'Glossary'
-        }
-      ]
+      type: 'doc',
+      id: 'meshcore/glossary',
+      label: 'Glossary'
     },
     {
       type: 'category',
