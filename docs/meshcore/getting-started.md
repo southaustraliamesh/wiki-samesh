@@ -1,44 +1,16 @@
 ---
-title: Getting started
+title: Getting started with MeshCore
 ---
 
-# Getting started with SA Mesh
+# Getting started with MeshCore
 
-SA Mesh uses LoRa-based mesh networking for low-power, long-range text communication without relying on mobile coverage or normal internet access.
+MeshCore is the recommended first path for most SA Mesh users. Start with a **companion node** unless you are deliberately building fixed infrastructure with the community.
 
-The first decision is which firmware and network style you want to use. SA Mesh currently focuses this new wiki on **MeshCore**, while the historical SA:MUG knowledge base still includes Meshtastic material.
+A companion node is a normal user device that talks to your phone or computer. It lets you learn the network, confirm local coverage and test settings without adding another always-on repeater to shared airtime.
 
-:::tip Recommended first path
-If you are new to the SA Mesh community, start with a **MeshCore companion node**. It is the simplest way to get a normal user device online before you experiment with repeaters or fixed infrastructure.
+:::tip First device recommendation
+If this is your first SA Mesh device, build or buy one device that can run **MeshCore companion firmware**, then test it against known-good local coverage before planning repeaters or permanent installs.
 :::
-
-## Choose your path
-
-| I want to... | Start here |
-| --- | --- |
-| Send and receive MeshCore messages from a phone or computer | [Companion node setup](/meshcore/companion-node) |
-| Understand the local SA Mesh radio baseline | [Recommended settings](/meshcore/recommended-settings) |
-| Place a fixed repeater or improve coverage | [Repeater node setup](/meshcore/repeater-node) |
-| Check a site before deployment | [Repeater deployment checklist](/meshcore/repeater-deployment-checklist) |
-| Troubleshoot an existing node | [Troubleshooting](/meshcore/troubleshooting) |
-| Learn MeshCore terms | [Glossary](/meshcore/glossary) |
-
-## Why MeshCore is the default path here
-
-MeshCore is usually the better fit for planned community infrastructure because it is designed around deliberate routing, fixed repeaters and efficient use of shared airtime.
-
-For SA Mesh, that means:
-
-- normal users can start with companion firmware;
-- fixed sites can be planned as repeaters instead of accidental always-on rebroadcasters;
-- radio settings can be kept consistent across SA, WA and compatible nearby networks;
-- troubleshooting can focus on firmware type, radio settings, antenna position and known-good test nodes.
-
-## When Meshtastic still makes sense
-
-Meshtastic remains useful for small groups, temporary events, portable experiments, GPS/location-sharing workflows and users who specifically want the Meshtastic app ecosystem.
-
-This Docusaurus migration starts with the MeshCore content because it is the current SA Mesh priority. Meshtastic pages can be migrated later into a separate section if the community wants the new wiki to carry both stacks.
 
 ## First-device checklist
 
@@ -52,13 +24,42 @@ Before flashing or changing settings:
 - record your starting settings before changing them;
 - test with a nearby known-good user, repeater or dashboard/map observation.
 
-## Live SA Mesh tools
+## Basic path
 
-- Main site: [samesh.au](https://samesh.au/)
-- Wiki: [wiki.samesh.au](https://wiki.samesh.au/)
-- Dashboard: [sa.themesh.au](https://sa.themesh.au/)
-- Map: [sa.themesh.au/map](https://sa.themesh.au/map)
+1. Choose a supported LoRa board for the Australian band.
+2. Flash MeshCore companion firmware for that exact board.
+3. Apply the local SA Mesh radio baseline from [Frequency & Settings](/meshcore/recommended-settings).
+4. Set a clear node name that identifies you without pretending to be infrastructure.
+5. Reboot after radio setting changes.
+6. Confirm the node can send/receive with a known-good nearby user or repeater.
+7. Use the dashboard/map as supporting evidence, not as the only proof that your node works.
 
-## Credits and inspiration
+## Local SA Mesh radio baseline
 
-This page adapts the decision-first onboarding pattern from the NSW Mesh getting-started page while using SA Mesh wording, links and local MeshCore priorities.
+South Australia, Western Australia and Queensland use:
+
+| Setting | Value |
+| --- | --- |
+| Frequency | 923.125 MHz |
+| Bandwidth | 62.5 kHz |
+| Spreading factor | 8 |
+| Coding rate | 8 |
+
+See [Frequency & Settings](/meshcore/recommended-settings) for the fuller local settings guidance.
+
+## What to read next
+
+| I want to... | Start here |
+| --- | --- |
+| Set up a normal user device | [Companion overview](/meshcore/companion-node) |
+| Understand local radio settings | [Frequency & Settings](/meshcore/recommended-settings) |
+| Place a fixed repeater or improve coverage | [Repeater overview](/meshcore/repeater-node) |
+| Check a site before deployment | [Deployment checklist](/meshcore/repeater-deployment-checklist) |
+| Troubleshoot an existing node | [Troubleshooting](/meshcore/troubleshooting) |
+| Learn MeshCore terms | [Glossary](/meshcore/glossary) |
+
+## Before building a repeater
+
+Do not make your first MeshCore device a repeater unless there is a clear coverage reason and the community has agreed it helps. Poorly placed repeaters can duplicate traffic, add noise and make the network harder to troubleshoot.
+
+For repeaters, start with [Repeater overview](/meshcore/repeater-node), then use the [Deployment checklist](/meshcore/repeater-deployment-checklist).

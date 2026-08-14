@@ -15,7 +15,8 @@ This Docusaurus wiki is being migrated from the SA:MUG Wiki.js content. MeshCore
 
 ## Start here
 
-- [Getting started with SA Mesh](./meshcore/getting-started.md)
+- [Getting Started](./getting-started.md)
+- [Getting started with MeshCore](./meshcore/getting-started.md)
 - [MeshCore start here](./meshcore/start-here.md)
 - [Companion node setup](./meshcore/companion-node.md)
 - [Repeater node setup](./meshcore/repeater-node.md)

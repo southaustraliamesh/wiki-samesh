@@ -71,3 +71,52 @@ body::before {
 .footer { border-top:1px solid rgb(148 163 184 / .16); }
 .markdown table { background:rgb(11 18 32 / .44); border-radius:16px; overflow:hidden; }
 .markdown th { background:rgb(89 115 255 / .16); }
+
+.getting-started-options {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 1.35rem 0 1.75rem;
+}
+
+.getting-started-card {
+  border: 1px solid rgb(148 163 184 / .22);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgb(89 115 255 / .18), transparent 38%),
+    linear-gradient(180deg, rgb(34 45 62 / .94), rgb(17 24 39 / .94));
+  box-shadow: 0 18px 46px rgb(0 0 0 / .24);
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: 1.15rem;
+  text-decoration: none;
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.getting-started-card:hover {
+  border-color: rgb(50 211 255 / .46);
+  box-shadow: 0 24px 70px rgb(36 74 145 / .36);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.getting-started-card strong {
+  color: #fff;
+  font-size: 1.35rem;
+  letter-spacing: -.02em;
+}
+
+.getting-started-card span:last-child {
+  color: #cbd5e1;
+}
+
+.getting-started-card__eyebrow {
+  color: #9be7d6;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}

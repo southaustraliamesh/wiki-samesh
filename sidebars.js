@@ -7,7 +7,7 @@ const sidebars = {
     },
     {
       type: 'doc',
-      id: 'meshcore/getting-started',
+      id: 'getting-started',
       label: 'Getting Started'
     },
     {
@@ -15,6 +15,11 @@ const sidebars = {
       label: 'MeshCore',
       collapsed: false,
       items: [
+        {
+          type: 'doc',
+          id: 'meshcore/getting-started',
+          label: 'Getting Started'
+        },
         {
           type: 'doc',
           id: 'meshcore/start-here',

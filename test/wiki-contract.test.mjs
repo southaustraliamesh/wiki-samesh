@@ -32,9 +32,18 @@ describe('SA Mesh wiki contract', () => {
 
   it('adds the migrated MeshCore page set and getting-started path', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
-    for (const doc of ['meshcore/getting-started', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
+    for (const doc of ['getting-started', 'meshcore/getting-started', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
       assert.match(sidebar, new RegExp(doc.replace('/', '\\/')));
     }
+  });
+
+  it('keeps top-level getting started separate from MeshCore setup', async () => {
+    const topLevel = await readFile(new URL('../docs/getting-started.md', import.meta.url), 'utf8');
+    const meshCore = await readFile(new URL('../docs/meshcore/getting-started.md', import.meta.url), 'utf8');
+    assert.match(topLevel, /title: Getting Started/);
+    assert.match(topLevel, /MeshCore or Meshtastic/);
+    assert.match(meshCore, /title: Getting started with MeshCore/);
+    assert.match(meshCore, /# Getting started with MeshCore/);
   });
 
   it('uses human-friendly NSW-style sidebar labels instead of raw page titles', async () => {
