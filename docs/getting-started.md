@@ -20,7 +20,7 @@ For most SA Mesh participants, start with **MeshCore** and a **companion node**.
     <strong>MeshCore</strong>
     <span>Best starting point for most SA Mesh users, fixed coverage planning, repeaters and community infrastructure.</span>
   </a>
-  <a class="getting-started-card" href="/community/resources">
+  <a class="getting-started-card" href="/meshtastic/getting-started">
     <span class="getting-started-card__eyebrow">Alternative / legacy</span>
     <strong>Meshtastic</strong>
     <span>Still useful for small groups, portable experiments and users who specifically want the Meshtastic app ecosystem.</span>
@@ -59,7 +59,7 @@ Meshtastic may still be a good fit when you want:
 - experimentation with the Meshtastic app ecosystem;
 - compatibility with an existing Meshtastic group.
 
-For now, use the legacy SA:MUG Wiki.js pages or community Discord for Meshtastic-specific guidance until that content is migrated.
+For Meshtastic-specific guidance, start with the migrated [Meshtastic getting started](/meshtastic/getting-started) and then check current upstream Meshtastic docs for firmware/app changes.
 
 ## Live SA Mesh tools
 

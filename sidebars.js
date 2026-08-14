@@ -44,6 +44,33 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Meshtastic',
+      collapsed: false,
+      items: [
+        {
+          type: 'doc',
+          id: 'meshtastic/getting-started',
+          label: 'Getting Started'
+        },
+        {
+          type: 'doc',
+          id: 'meshtastic/node-settings',
+          label: 'Node Settings'
+        },
+        {
+          type: 'doc',
+          id: 'meshtastic/mqtt-gateways',
+          label: 'MQTT & Gateways'
+        },
+        {
+          type: 'doc',
+          id: 'meshtastic/maps',
+          label: 'Maps'
+        }
+      ]
+    },
+    {
+      type: 'category',
       label: 'Hardware',
       collapsed: false,
       items: [
@@ -78,6 +105,23 @@ const sidebars = {
               type: 'doc',
               id: 'meshcore/repeater-settings',
               label: 'Settings Profiles'
+            }
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Meshtastic Builds',
+          collapsed: false,
+          items: [
+            {
+              type: 'doc',
+              id: 'hardware/meshtastic-node-builds',
+              label: 'Node Builds'
+            },
+            {
+              type: 'doc',
+              id: 'hardware/antennas',
+              label: 'Antennas'
             }
           ]
         }

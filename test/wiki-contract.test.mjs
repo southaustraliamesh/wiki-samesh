@@ -46,6 +46,28 @@ describe('SA Mesh wiki contract', () => {
     assert.match(meshCore, /# Getting started with MeshCore/);
   });
 
+  it('adds remaining migrated Meshtastic pages with human-friendly nav', async () => {
+    const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
+    for (const doc of ['meshtastic/getting-started', 'meshtastic/node-settings', 'meshtastic/mqtt-gateways', 'meshtastic/maps', 'hardware/meshtastic-node-builds', 'hardware/antennas']) {
+      assert.match(sidebar, new RegExp(doc.replace('/', '\\/')));
+    }
+    for (const label of ['Meshtastic', 'Getting Started', 'Node Settings', 'MQTT & Gateways', 'Maps', 'Meshtastic Builds', 'Node Builds', 'Antennas']) {
+      assert.match(sidebar, new RegExp(`label: '${label.replace('&', '\\&')}'`));
+    }
+  });
+
+  it('keeps Meshtastic migration conservative and source-noted', async () => {
+    const files = await listMarkdown(new URL('../docs/meshtastic', import.meta.url));
+    assert.ok(files.length >= 4);
+    const hardwareFiles = await listMarkdown(new URL('../docs/hardware', import.meta.url));
+    const combined = (await Promise.all([...files, ...hardwareFiles].map((file) => readFile(fileURLToPath(file), 'utf8')))).join('\n');
+    assert.match(combined, /Migrated from the legacy SA:MUG Wiki.js Meshtastic page/);
+    assert.match(combined, /current primary documentation path remains MeshCore/);
+    assert.match(combined, /legal EIRP/);
+    assert.match(combined, /location/i);
+    assert.match(combined, /battery|waterproofing|lightning/i);
+  });
+
   it('uses human-friendly NSW-style sidebar labels instead of raw page titles', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
     for (const label of ['Getting Started', 'Overview', 'Frequency & Settings', 'Hardware', 'Companions', 'Repeaters', 'Deployment Checklist', 'Settings Profiles', 'Reference', 'CLI Commands', 'Delay Calculations']) {
