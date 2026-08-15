@@ -22,6 +22,16 @@ describe('SA Mesh wiki contract', () => {
     assert.match(config, /https:\/\/sa\.themesh\.au\/map/);
     assert.match(config, /https:\/\/discord\.gg\/w9b7EBNC8X/);
     assert.match(config, /favicon: 'img\/favicon\.ico'/);
+    assert.match(config, /alt: 'SA Mesh South Australia community logo'/);
+  });
+
+  it('ships explicit robots rules and sitemap pointers', async () => {
+    const robots = await readFile(new URL('../static/robots.txt', import.meta.url), 'utf8');
+    assert.match(robots, /User-agent: \*/);
+    assert.match(robots, /Allow: \//);
+    assert.match(robots, /Sitemap: https:\/\/wiki\.samesh\.au\/sitemap\.xml/);
+    assert.match(robots, /Sitemap: https:\/\/samesh\.au\/sitemap\.xml/);
+    assert.doesNotMatch(robots, /<!doctype html>/i);
   });
 
   it('uses the current SA Mesh Discord invite across public docs', async () => {
@@ -40,9 +50,37 @@ describe('SA Mesh wiki contract', () => {
 
   it('adds the migrated MeshCore page set and getting-started path', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
-    for (const doc of ['getting-started', 'meshcore/getting-started', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
+    for (const doc of ['getting-started', 'meshcore/south-australia', 'meshcore/getting-started', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
       assert.match(sidebar, new RegExp(doc.replace('/', '\\/')));
     }
+  });
+
+  it('adds a MeshCore South Australia search-intent page', async () => {
+    const page = await readFile(new URL('../docs/meshcore/south-australia.md', import.meta.url), 'utf8');
+    assert.match(page, /title: MeshCore South Australia/);
+    assert.match(page, /description: "Start here for the South Australian MeshCore community/);
+    assert.match(page, /# MeshCore South Australia/);
+    assert.match(page, /https:\/\/samesh\.au\//);
+    assert.match(page, /https:\/\/discord\.gg\/w9b7EBNC8X/);
+    assert.match(page, /923\.125 MHz/);
+  });
+
+  it('sets useful page descriptions and descriptive logo alt text', async () => {
+    const intro = await readFile(new URL('../docs/intro.md', import.meta.url), 'utf8');
+    const gettingStarted = await readFile(new URL('../docs/getting-started.md', import.meta.url), 'utf8');
+    const meshCoreGettingStarted = await readFile(new URL('../docs/meshcore/getting-started.md', import.meta.url), 'utf8');
+    const settings = await readFile(new URL('../docs/meshcore/recommended-settings.md', import.meta.url), 'utf8');
+    const resources = await readFile(new URL('../docs/community/resources.md', import.meta.url), 'utf8');
+    const css = await readFile(new URL('../src/css/custom.css', import.meta.url), 'utf8');
+
+    assert.match(intro, /description: SA Mesh is the South Australian MeshCore community knowledge base/);
+    assert.match(intro, /!\[SA Mesh South Australia community banner\]/);
+    assert.match(gettingStarted, /description: Choose a South Australian mesh path/);
+    assert.match(meshCoreGettingStarted, /description: MeshCore South Australia getting-started guide/);
+    assert.match(settings, /description: South Australian MeshCore radio settings/);
+    assert.match(resources, /description: SA Mesh community resource links/);
+    assert.doesNotMatch(settings, /description: \{\/ migrated \/\}/);
+    assert.match(css, /SA Mesh South Australia community banner/);
   });
 
   it('keeps top-level getting started separate from MeshCore setup', async () => {
@@ -103,7 +141,7 @@ describe('SA Mesh wiki contract', () => {
 
   it('uses human-friendly NSW-style sidebar labels instead of raw page titles', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
-    for (const label of ['Getting Started', 'Overview', 'Frequency & Settings', 'Hardware', 'Companions', 'Repeaters', 'Deployment Checklist', 'Settings Profiles', 'Reference', 'CLI Commands', 'Delay Calculations']) {
+    for (const label of ['South Australia', 'Getting Started', 'Overview', 'Frequency & Settings', 'Hardware', 'Companions', 'Repeaters', 'Deployment Checklist', 'Settings Profiles', 'Reference', 'CLI Commands', 'Delay Calculations']) {
       assert.match(sidebar, new RegExp(`label: '${label.replace('&', '\\&')}'`));
     }
     assert.doesNotMatch(sidebar, /label: 'MeshCore start here'/);

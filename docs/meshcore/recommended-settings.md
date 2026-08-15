@@ -1,5 +1,6 @@
 ---
 title: SA:MUG recommended MeshCore settings
+description: South Australian MeshCore radio settings and SA Mesh setup guidance, including frequency, bandwidth, spreading factor and coding rate.
 ---
 
 {/* migrated */}

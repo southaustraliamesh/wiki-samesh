@@ -46,7 +46,9 @@ jobs:
           test -f build/img/favicon.ico
           test -f build/img/favicon-32.png
           test -f build/img/favicon-192.png
+          test -f build/robots.txt
           test -f build/sitemap.xml
+          test -f build/meshcore/south-australia.html
           test ! -e build/.git
           test ! -e build/node_modules
 

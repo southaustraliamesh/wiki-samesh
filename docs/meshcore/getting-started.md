@@ -1,5 +1,6 @@
 ---
 title: Getting started with MeshCore
+description: MeshCore South Australia getting-started guide for SA Mesh users, companion nodes, local settings, dashboard and map checks.
 ---
 
 # Getting started with MeshCore

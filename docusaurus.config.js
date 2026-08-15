@@ -43,7 +43,7 @@ const config = {
     navbar: {
       title: 'SA Mesh Wiki',
       logo: {
-        alt: 'SA:MUG logo',
+        alt: 'SA Mesh South Australia community logo',
         src: 'img/samug-logo.png'
       },
       items: [

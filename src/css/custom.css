@@ -109,7 +109,7 @@ body::before {
 .theme-doc-markdown { color:#e5e7eb; }
 .theme-doc-markdown h1, .theme-doc-markdown h2 { font-style:italic; }
 .theme-doc-markdown p, .theme-doc-markdown li { color:#dbe4f0; }
-.theme-doc-markdown img[alt='SA:MUG banner'] { max-width:342px; border-radius:14px; box-shadow:0 24px 80px rgb(36 74 145 / .34); }
+.theme-doc-markdown img[alt='SA Mesh South Australia community banner'] { max-width:342px; border-radius:14px; box-shadow:0 24px 80px rgb(36 74 145 / .34); }
 .card, .theme-admonition, .table-of-contents, .theme-doc-sidebar-container {
   border-color: rgb(148 163 184 / .18) !important;
   background: linear-gradient(180deg, rgb(34 45 62 / .95), rgb(25 35 50 / .95));

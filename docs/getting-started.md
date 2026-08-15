@@ -1,5 +1,6 @@
 ---
 title: Getting Started
+description: Choose a South Australian mesh path, start with MeshCore, and find SA Mesh wiki, dashboard, map and Discord links.
 ---
 
 # Getting Started

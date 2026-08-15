@@ -1,11 +1,12 @@
 ---
 title: Welcome
+description: SA Mesh is the South Australian MeshCore community knowledge base with local getting-started guides, settings, dashboard, map and Discord links.
 slug: /
 ---
 
 # SA Mesh Wiki
 
-![SA:MUG banner](/img/samug-logo.png)
+![SA Mesh South Australia community banner](/img/samug-logo.png)
 
 SA Mesh is the South Australian MeshCore community knowledge base: practical local notes, repeatable setup guidance and links to the live SA dashboard and map.
 

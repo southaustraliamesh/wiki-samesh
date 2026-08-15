@@ -17,6 +17,11 @@ const sidebars = {
       items: [
         {
           type: 'doc',
+          id: 'meshcore/south-australia',
+          label: 'South Australia'
+        },
+        {
+          type: 'doc',
           id: 'meshcore/getting-started',
           label: 'Getting Started'
         },

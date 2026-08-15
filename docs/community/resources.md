@@ -1,5 +1,6 @@
 ---
 title: Community resources
+description: SA Mesh community resource links for South Australian MeshCore users, including wiki, dashboard, map, Discord and broader MeshCore Australia tools.
 ---
 
 # Community resources
