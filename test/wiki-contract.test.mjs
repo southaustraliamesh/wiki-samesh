@@ -72,6 +72,15 @@ describe('SA Mesh wiki contract', () => {
     assert.match(css, /overscroll-behavior:\s*contain/);
   });
 
+  it('uses the supplied wide SAMUG logo artwork in the navbar', async () => {
+    const logo = await readFile(new URL('../static/img/samug-logo.png', import.meta.url));
+    assert.equal(logo.readUInt32BE(16), 900);
+    assert.equal(logo.readUInt32BE(20), 300);
+    const css = await readFile(new URL('../src/css/custom.css', import.meta.url), 'utf8');
+    assert.match(css, /\.navbar__logo \{ width:138px/);
+    assert.match(css, /\.navbar__logo img \{ width:138px/);
+  });
+
   it('keeps Meshtastic migration conservative and source-noted', async () => {
     const files = await listMarkdown(new URL('../docs/meshtastic', import.meta.url));
     assert.ok(files.length >= 4);

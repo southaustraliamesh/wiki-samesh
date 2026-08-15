@@ -51,8 +51,8 @@ body::before {
 .navbar__title { color:#fff; }
 .navbar__link { color:#cbd5e1; }
 .navbar__link:hover { color:#fff; }
-.navbar__logo { width:112px; height:auto; margin-right:12px; }
-.navbar__logo img { width:112px; height:auto; object-fit:contain; border-radius:10px; box-shadow:0 0 0 1px rgb(50 211 255 / .18), 0 8px 24px rgb(36 74 145 / .46); }
+.navbar__logo { width:138px; height:auto; margin-right:12px; }
+.navbar__logo img { width:138px; height:auto; object-fit:contain; border-radius:10px; box-shadow:0 0 0 1px rgb(50 211 255 / .18), 0 8px 24px rgb(36 74 145 / .46); }
 @media (max-width: 996px) {
   .navbar {
     -webkit-backdrop-filter: none;
