@@ -67,6 +67,7 @@ For Meshtastic-specific guidance, start with the migrated [Meshtastic getting st
 - Wiki: [wiki.samesh.au](https://wiki.samesh.au/)
 - Dashboard: [sa.themesh.au](https://sa.themesh.au/)
 - Map: [sa.themesh.au/map](https://sa.themesh.au/map)
+- Discord: [SA Mesh Discord](https://discord.gg/w9b7EBNC8X)
 
 ## Credits and inspiration
 

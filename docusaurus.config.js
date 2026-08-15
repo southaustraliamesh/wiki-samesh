@@ -51,6 +51,7 @@ const config = {
         { href: 'https://samesh.au/', label: 'SA Mesh', position: 'right' },
         { href: 'https://sa.themesh.au/', label: 'Dashboard', position: 'right' },
         { href: 'https://sa.themesh.au/map', label: 'Map', position: 'right' },
+        { href: 'https://discord.gg/w9b7EBNC8X', label: 'Discord', position: 'right' },
         { href: 'https://themesh.au/', label: 'AU MeshCore', position: 'right' }
       ]
     },
@@ -62,7 +63,8 @@ const config = {
           items: [
             { label: 'Main site', href: 'https://samesh.au/' },
             { label: 'Dashboard', href: 'https://sa.themesh.au/' },
-            { label: 'Map', href: 'https://sa.themesh.au/map' }
+            { label: 'Map', href: 'https://sa.themesh.au/map' },
+            { label: 'Discord', href: 'https://discord.gg/w9b7EBNC8X' }
           ]
         },
         {

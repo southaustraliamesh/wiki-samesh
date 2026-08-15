@@ -53,6 +53,6 @@ These settings came from the legacy Meshtastic wiki. Confirm the current app lab
 
 ## Need help?
 
-- [SA:MUG Discord](https://discord.gg/sauMmjJpTB)
+- [SA Mesh Discord](https://discord.gg/w9b7EBNC8X)
 - [Official Meshtastic docs](https://meshtastic.org/docs)
 - [Meshtastic node settings](./node-settings.md)

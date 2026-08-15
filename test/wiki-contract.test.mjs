@@ -20,7 +20,15 @@ describe('SA Mesh wiki contract', () => {
     assert.match(config, /https:\/\/wiki\.samesh\.au/);
     assert.match(config, /https:\/\/samesh\.au\//);
     assert.match(config, /https:\/\/sa\.themesh\.au\/map/);
+    assert.match(config, /https:\/\/discord\.gg\/w9b7EBNC8X/);
     assert.match(config, /favicon: 'img\/favicon\.ico'/);
+  });
+
+  it('uses the current SA Mesh Discord invite across public docs', async () => {
+    const files = await listMarkdown(fileURLToPath(new URL('../docs', import.meta.url)));
+    const combined = (await Promise.all(files.map((file) => readFile(file, 'utf8')))).join('\n');
+    assert.match(combined, /https:\/\/discord\.gg\/w9b7EBNC8X/);
+    assert.doesNotMatch(combined, /https:\/\/discord\.gg\/sauMmjJpTB/);
   });
 
   it('keeps SA radio baseline visible in migrated docs', async () => {
