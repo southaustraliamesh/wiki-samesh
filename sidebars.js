@@ -47,6 +47,52 @@ const sidebars = {
         },
         {
           type: 'category',
+          label: 'Hardware',
+          collapsed: false,
+          items: [
+            {
+              type: 'doc',
+              id: 'meshcore/hardware-builds',
+              label: 'Hardware Builds'
+            },
+            {
+              type: 'category',
+              label: 'Companions',
+              collapsed: false,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'meshcore/companion-node',
+                  label: 'Overview'
+                }
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Repeaters',
+              collapsed: false,
+              items: [
+                {
+                  type: 'doc',
+                  id: 'meshcore/repeater-node',
+                  label: 'Overview'
+                },
+                {
+                  type: 'doc',
+                  id: 'meshcore/repeater-deployment-checklist',
+                  label: 'Deployment Checklist'
+                },
+                {
+                  type: 'doc',
+                  id: 'meshcore/repeater-settings',
+                  label: 'Settings Profiles'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          type: 'category',
           label: 'Reference',
           collapsed: false,
           items: [
@@ -88,47 +134,6 @@ const sidebars = {
           type: 'doc',
           id: 'meshtastic/maps',
           label: 'Maps'
-        }
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Hardware',
-      collapsed: false,
-      items: [
-        {
-          type: 'category',
-          label: 'Companions',
-          collapsed: false,
-          items: [
-            {
-              type: 'doc',
-              id: 'meshcore/companion-node',
-              label: 'Overview'
-            }
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Repeaters',
-          collapsed: false,
-          items: [
-            {
-              type: 'doc',
-              id: 'meshcore/repeater-node',
-              label: 'Overview'
-            },
-            {
-              type: 'doc',
-              id: 'meshcore/repeater-deployment-checklist',
-              label: 'Deployment Checklist'
-            },
-            {
-              type: 'doc',
-              id: 'meshcore/repeater-settings',
-              label: 'Settings Profiles'
-            }
-          ]
         },
         {
           type: 'category',

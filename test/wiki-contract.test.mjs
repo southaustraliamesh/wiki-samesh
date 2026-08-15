@@ -50,9 +50,20 @@ describe('SA Mesh wiki contract', () => {
 
   it('adds the migrated MeshCore page set and getting-started path', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
-    for (const doc of ['getting-started', 'meshcore/south-australia', 'meshcore/getting-started', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
+    for (const doc of ['getting-started', 'meshcore/south-australia', 'meshcore/getting-started', 'meshcore/hardware-builds', 'meshcore/companion-node', 'meshcore/repeater-node', 'meshcore/cli-quick-reference', 'meshcore/rxdelay-txdelay']) {
       assert.match(sidebar, new RegExp(doc.replace('/', '\\/')));
     }
+  });
+
+  it('adds MeshCore hardware build guidance from the build-sharing checklist', async () => {
+    const page = await readFile(new URL('../docs/meshcore/hardware-builds.md', import.meta.url), 'utf8');
+    assert.match(page, /title: MeshCore Hardware Builds/);
+    assert.match(page, /What's needed to share a build/);
+    for (const item of ['purpose and expected environment', 'device\/board model', 'firmware and role', 'power source and charging details', 'enclosure and waterproofing notes', 'antenna\/feedline details', 'photos or diagrams', 'known limitations and maintenance requirements']) {
+      assert.match(page, new RegExp(item));
+    }
+    assert.match(page, /MeshCore-first/);
+    assert.match(page, /companion or repeater firmware/);
   });
 
   it('adds a MeshCore South Australia search-intent page', async () => {
@@ -102,6 +113,28 @@ describe('SA Mesh wiki contract', () => {
     }
   });
 
+  it('moves hardware navigation into MeshCore and Meshtastic sections', async () => {
+    const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
+    const meshCoreStart = sidebar.indexOf("label: 'MeshCore'");
+    const meshtasticStart = sidebar.indexOf("label: 'Meshtastic'");
+    const glossaryStart = sidebar.indexOf("label: 'Glossary'");
+    const communityStart = sidebar.indexOf("label: 'Community'");
+    const hardwareStart = sidebar.indexOf("label: 'Hardware'");
+    const companionStart = sidebar.indexOf("label: 'Companions'");
+    const repeaterStart = sidebar.indexOf("label: 'Repeaters'");
+    const meshtasticBuildsStart = sidebar.indexOf("label: 'Meshtastic Builds'");
+    const meshtasticNodeBuildsStart = sidebar.indexOf("id: 'hardware/meshtastic-node-builds'");
+    const antennasStart = sidebar.indexOf("id: 'hardware/antennas'");
+
+    assert.ok(hardwareStart > meshCoreStart && hardwareStart < meshtasticStart, 'Hardware should be nested under MeshCore');
+    assert.ok(companionStart > hardwareStart && companionStart < meshtasticStart, 'Companions should be nested under MeshCore Hardware');
+    assert.ok(repeaterStart > hardwareStart && repeaterStart < meshtasticStart, 'Repeaters should be nested under MeshCore Hardware');
+    assert.ok(meshtasticBuildsStart > meshtasticStart && meshtasticBuildsStart < glossaryStart, 'Meshtastic Builds should be nested under Meshtastic');
+    assert.ok(meshtasticNodeBuildsStart > meshtasticBuildsStart && meshtasticNodeBuildsStart < glossaryStart, 'Meshtastic node builds should sit under Meshtastic Builds');
+    assert.ok(antennasStart > meshtasticBuildsStart && antennasStart < glossaryStart, 'Antennas should sit under Meshtastic Builds');
+    assert.ok(glossaryStart > meshtasticStart && glossaryStart < communityStart, 'Glossary should remain global before Community');
+  });
+
   it('keeps the mobile navbar sidebar above page content', async () => {
     const css = await readFile(new URL('../src/css/custom.css', import.meta.url), 'utf8');
     assert.match(css, /@media \(max-width: 996px\)/);
@@ -141,7 +174,7 @@ describe('SA Mesh wiki contract', () => {
 
   it('uses human-friendly NSW-style sidebar labels instead of raw page titles', async () => {
     const sidebar = await readFile(new URL('../sidebars.js', import.meta.url), 'utf8');
-    for (const label of ['South Australia', 'Getting Started', 'Overview', 'Frequency & Settings', 'Hardware', 'Companions', 'Repeaters', 'Deployment Checklist', 'Settings Profiles', 'Reference', 'CLI Commands', 'Delay Calculations']) {
+    for (const label of ['South Australia', 'Getting Started', 'Overview', 'Frequency & Settings', 'Hardware', 'Hardware Builds', 'Companions', 'Repeaters', 'Deployment Checklist', 'Settings Profiles', 'Reference', 'CLI Commands', 'Delay Calculations']) {
       assert.match(sidebar, new RegExp(`label: '${label.replace('&', '\\&')}'`));
     }
     assert.doesNotMatch(sidebar, /label: 'MeshCore start here'/);
@@ -155,7 +188,7 @@ describe('SA Mesh wiki contract', () => {
     const meshtasticStart = sidebar.indexOf("label: 'Meshtastic'");
     const glossaryStart = sidebar.indexOf("label: 'Glossary'");
     const communityStart = sidebar.indexOf("label: 'Community'");
-    for (const needle of ["id: 'meshcore/cli-quick-reference'", "id: 'meshcore/rxdelay-txdelay'", "label: 'Reference'"]) {
+    for (const needle of ["id: 'meshcore/hardware-builds'", "id: 'meshcore/companion-node'", "id: 'meshcore/repeater-node'", "id: 'meshcore/cli-quick-reference'", "id: 'meshcore/rxdelay-txdelay'", "label: 'Reference'"]) {
       const index = sidebar.indexOf(needle);
       assert.ok(index > meshCoreStart && index < meshtasticStart, `${needle} should be inside MeshCore before Meshtastic`);
     }
