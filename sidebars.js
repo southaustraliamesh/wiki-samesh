@@ -51,11 +51,6 @@ const sidebars = {
           collapsed: false,
           items: [
             {
-              type: 'doc',
-              id: 'meshcore/hardware-builds',
-              label: 'Hardware Builds'
-            },
-            {
               type: 'category',
               label: 'Companions',
               collapsed: false,
@@ -88,6 +83,11 @@ const sidebars = {
                   label: 'Settings Profiles'
                 }
               ]
+            },
+            {
+              type: 'doc',
+              id: 'meshcore/hardware-builds',
+              label: 'Hardware Builds'
             }
           ]
         },

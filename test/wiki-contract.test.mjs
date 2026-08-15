@@ -120,6 +120,7 @@ describe('SA Mesh wiki contract', () => {
     const glossaryStart = sidebar.indexOf("label: 'Glossary'");
     const communityStart = sidebar.indexOf("label: 'Community'");
     const hardwareStart = sidebar.indexOf("label: 'Hardware'");
+    const hardwareBuildsStart = sidebar.indexOf("id: 'meshcore/hardware-builds'");
     const companionStart = sidebar.indexOf("label: 'Companions'");
     const repeaterStart = sidebar.indexOf("label: 'Repeaters'");
     const meshtasticBuildsStart = sidebar.indexOf("label: 'Meshtastic Builds'");
@@ -129,6 +130,7 @@ describe('SA Mesh wiki contract', () => {
     assert.ok(hardwareStart > meshCoreStart && hardwareStart < meshtasticStart, 'Hardware should be nested under MeshCore');
     assert.ok(companionStart > hardwareStart && companionStart < meshtasticStart, 'Companions should be nested under MeshCore Hardware');
     assert.ok(repeaterStart > hardwareStart && repeaterStart < meshtasticStart, 'Repeaters should be nested under MeshCore Hardware');
+    assert.ok(hardwareBuildsStart > repeaterStart && hardwareBuildsStart < meshtasticStart, 'MeshCore Hardware Builds should sit below Companions and Repeaters');
     assert.ok(meshtasticBuildsStart > meshtasticStart && meshtasticBuildsStart < glossaryStart, 'Meshtastic Builds should be nested under Meshtastic');
     assert.ok(meshtasticNodeBuildsStart > meshtasticBuildsStart && meshtasticNodeBuildsStart < glossaryStart, 'Meshtastic node builds should sit under Meshtastic Builds');
     assert.ok(antennasStart > meshtasticBuildsStart && antennasStart < glossaryStart, 'Antennas should sit under Meshtastic Builds');
