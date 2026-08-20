@@ -21,8 +21,27 @@ describe('SA Mesh wiki contract', () => {
     assert.match(config, /https:\/\/samesh\.au\//);
     assert.match(config, /https:\/\/sa\.themesh\.au\/map/);
     assert.match(config, /https:\/\/discord\.gg\/w9b7EBNC8X/);
+    assert.match(config, /editUrl: 'https:\/\/github\.com\/southaustraliamesh\/wiki-samesh\/tree\/preview\//);
     assert.match(config, /favicon: 'img\/favicon\.ico'/);
     assert.match(config, /alt: 'SA Mesh South Australia community logo'/);
+  });
+
+  it('keeps community PRs preview-only and deployment only on approved branch merges', async () => {
+    const workflow = await readFile(new URL('../.github/workflows/deploy-cloudflare-pages.yml', import.meta.url), 'utf8');
+    const readme = await readFile(new URL('../README.md', import.meta.url), 'utf8');
+    const contributing = await readFile(new URL('../docs/community/contributing.md', import.meta.url), 'utf8');
+    const template = await readFile(new URL('../.github/PULL_REQUEST_TEMPLATE.md', import.meta.url), 'utf8');
+
+    assert.doesNotMatch(workflow, /^\s*pull_request:/m);
+    assert.match(workflow, /branches:\n\s+- main\n\s+- preview/);
+    assert.match(workflow, /pages deploy build --project-name=wiki-samesh --branch=\"\$CF_PAGES_BRANCH\"/);
+    for (const text of [readme, contributing, template]) {
+      assert.match(text, /preview/);
+      assert.doesNotMatch(text, /base branch `main`/i);
+    }
+    assert.match(readme, /Pull requests do not trigger Actions or deployment automatically/);
+    assert.match(contributing, /Open community pull requests against the `preview` branch/);
+    assert.match(template, /I am targeting the `preview` branch, not `main`/);
   });
 
   it('ships explicit robots rules and sitemap pointers', async () => {

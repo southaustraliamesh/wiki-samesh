@@ -24,7 +24,7 @@ const config = {
         docs: {
           sidebarPath: './sidebars.js',
           routeBasePath: '/',
-          editUrl: 'https://github.com/southaustraliamesh/wiki-samesh/tree/main/'
+          editUrl: 'https://github.com/southaustraliamesh/wiki-samesh/tree/preview/'
         },
         blog: false,
         theme: {
